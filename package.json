@@ -10,10 +10,16 @@
     "react-scripts": "1.1.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,scss,css}": [
-      "prettier --config .prettierrc --write",
-      "git add"
-    ]
+     "src/**/*.{js,jsx,json}": [
+         "eslint --fix",
+         "prettier --config .prettierrc --write",
+         "git add"
+       ],
+       "src/**/*.{scss,css}": [
+         "stylelint --config=.stylelintrc --fix",
+         "prettier --config .prettierrc --write",
+         "git add"
+       ]
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -22,8 +28,13 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test:lint:js": "eslint --ext=js --ext=jsx .",
+    "test:lint:scss": "stylelint --config=.stylelintrc '**/*.scss'",
+    "test:lint": "run-s test:lint:**",
+    "test:unit": "react-scripts test --env=jsdom",
+    "test": "run-s test:**",
+    "eject": "react-scripts eject",
+    "eslint-proj": "node_modules/.bin/eslint --ext=js --ext=jsx --fix ."
   },
   "devDependencies": {
     "eslint": "^4.16.0",
@@ -35,6 +46,8 @@
     "eslint-plugin-react": "^7.6.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.1.0",
-    "prettier": "^1.10.2"
+    "prettier": "^1.10.2",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0"
   }
 }
