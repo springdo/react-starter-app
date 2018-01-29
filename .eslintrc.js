@@ -17,6 +17,7 @@ module.exports = {
         'singleQuote': true,
         'trailingComma': 'es5'
       }],
+      "import/extensions": 0
     },
     'parserOptions': {
       'ecmaFeatures': {
