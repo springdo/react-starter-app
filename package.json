@@ -22,7 +22,8 @@
     ],
     "coverageReporters": [
       "lcov",
-      "text"
+      "text",
+      "clover"
     ]
   },
   "lint-staged": {
