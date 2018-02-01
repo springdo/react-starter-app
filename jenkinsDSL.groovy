@@ -309,7 +309,7 @@ pipelineNames.each {
         filterBuildQueue()
         filterExecutors()
         jobs {
-            regex('.*cc-' + end + '.*')
+            regex('.*' + appName + '.*')
         }
     }
 }
